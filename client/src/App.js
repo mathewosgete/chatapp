@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "./context/UserContext";
 import { Route, Routes, Navigate } from "react-router-dom";
+import API_BASE from "./config/api";
 
 import Signup from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
@@ -25,7 +26,7 @@ function App() {
         return;
       }
       try {
-        const userRes = await axios.get("http://localhost:4000/api/users/id", {
+        const userRes = await axios.get(`${API_BASE}/api/users/id`, {
           headers: { "x-auth-token": token },
         });
         const currentUser = Array.isArray(userRes.data.data)

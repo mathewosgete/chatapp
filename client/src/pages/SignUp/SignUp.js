@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import AppShell from "../../components/AppShell/AppShell";
+import API_BASE from "../../config/api";
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -30,10 +31,10 @@ const SignUp = () => {
     setError("");
 
     try {
-      await axios.post("http://localhost:4000/api/users", form);
+      await axios.post(`${API_BASE}/api/users`, form);
 
       const loginRes = await axios.post(
-        "http://localhost:4000/api/users/login",
+        `${API_BASE}/api/users/login`,
         {
           email: form.email,
           password: form.password,

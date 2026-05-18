@@ -3,6 +3,7 @@ import axios from "axios";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate, Link } from "react-router-dom";
 import AppShell from "../../components/AppShell/AppShell";
+import API_BASE from "../../config/api";
 
 const Login = () => {
   const { userdata, setUserdata } = useContext(UserContext);
@@ -27,7 +28,7 @@ const Login = () => {
     setError("");
 
     try {
-      const loginRes = await axios.post("http://localhost:4000/api/users/login", {
+      const loginRes = await axios.post(`${API_BASE}/api/users/login`, {
         email: form.email,
         password: form.password,
       });
